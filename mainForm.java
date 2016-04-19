@@ -4,8 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -190,25 +189,8 @@ public class mainForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenuItem3ActionPerformed
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String sequence1 = jTextArea1.getText().trim();          //First sequence to bind (forward)
-        String sequence2 = jTextArea2.getText().trim();          //Second sequence to bind (reverse)
-        int nucleotideNumber = Integer.parseInt(jTextPane1.getText());     //Amount of nucleotide in impose part
-        String fileName = jTextPane2.getText().trim();      //name of file
-        int numOfFile;
-        if(fileName.equalsIgnoreCase(""))
-            fileName = "Bind";                              //when user don't give a file name, set fileName equals Bind
-
-        String sequenceLast = sequence1;                   //output sequence set as all first sequence
-        for(int i=nucleotideNumber; i<sequence2.length(); i++){      //to output sequence are added nucleotide from second sequence without impose beggining 
-            sequenceLast = sequenceLast + sequence2.charAt(i);
-        }
-        
-        File file = new File(fileName + ".txt");   
-        if(file.exists()){
-           if (JOptionPane.showConfirmDialog(null, "File with this name already exist. Would you like to overwrite it?", "WARNING",
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                try {
+    public void createFile(File file, String sequenceLast){   //function to create file
+        try {
                     file.createNewFile();
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(null, "Some problem with create file...", "Warning", JOptionPane.ERROR_MESSAGE);
@@ -221,25 +203,40 @@ public class mainForm extends javax.swing.JFrame {
                 }catch(Exception e){
                      JOptionPane.showMessageDialog(null, "Some problem with save file...", "Warning", JOptionPane.ERROR_MESSAGE);
                 }
-                System.out.println(sequenceLast);
-            }
-        } else {
-            try {
-                file.createNewFile();
-            } catch (IOException ex) {
-                JOptionPane.showMessageDialog(null, "Some problem with create file...", "Warning", JOptionPane.ERROR_MESSAGE);
-            }
-            BufferedWriter bw = null;
-            try{
-                bw = new BufferedWriter(new FileWriter(file));
-                bw.write(sequenceLast);
-                bw.close();
-            }catch(Exception e){
-                JOptionPane.showMessageDialog(null, "Some problem with save file...", "Warning", JOptionPane.ERROR_MESSAGE);
-            }
-            System.out.println(sequenceLast);
-        }
+    }
+    
+    public boolean checkInputSequence(String sequence){    //function to check sequence, only can contains ATGC or atcg for DNA, uU for RNA
+        boolean check = Pattern.matches("[aAtTcCgGuU]*", sequence);      //true or false
+        return check;
+    }
+    
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String sequence1 = jTextArea1.getText().trim();          //First sequence to bind (forward)
+        String sequence2 = jTextArea2.getText().trim();          //Second sequence to bind (reverse)
         
+        if(!checkInputSequence(sequence1) || !checkInputSequence(sequence2))
+            JOptionPane.showMessageDialog(null, "Incorrect sequence", "Warning", JOptionPane.ERROR_MESSAGE);
+        else {
+            String fileName = jTextPane2.getText().trim();      //name of file
+            if(fileName.isEmpty())
+                JOptionPane.showMessageDialog(null, "Name of file can't be empty", "Warning", JOptionPane.ERROR_MESSAGE);
+            else{
+                int nucleotideNumber = Integer.parseInt(jTextPane1.getText());     //Amount of nucleotide in impose part
+                String sequenceLast = sequence1;                   //output sequence set as all first sequence
+                
+                for(int i=nucleotideNumber; i<sequence2.length(); i++)      //to output sequence are added nucleotide from second sequence without impose beggining 
+                    sequenceLast = sequenceLast + sequence2.charAt(i);
+                
+                File file = new File(fileName + ".txt");   
+                if(file.exists()){
+                   if (JOptionPane.showConfirmDialog(null, "File with this name already exist. Would you like to overwrite it?", "WARNING",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                        createFile(file, sequenceLast);
+                    }
+                } else 
+                    createFile(file, sequenceLast);
+            }      
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
