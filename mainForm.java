@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * @author ula
  */
 public class mainForm extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form mainForm
      */
@@ -40,6 +40,11 @@ public class mainForm extends javax.swing.JFrame {
         jMenuBar6 = new javax.swing.JMenuBar();
         jMenu11 = new javax.swing.JMenu();
         jMenu12 = new javax.swing.JMenu();
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
+        buttonGroup3 = new javax.swing.ButtonGroup();
+        buttonGroup4 = new javax.swing.ButtonGroup();
+        buttonGroup5 = new javax.swing.ButtonGroup();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -66,11 +71,16 @@ public class mainForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
 
         jMenu2.setText("File");
@@ -104,9 +114,10 @@ public class mainForm extends javax.swing.JFrame {
         jMenuBar6.add(jMenu12);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sequence Binding 1.0");
+        setTitle("Sequer 1.0");
 
         jLabel4.setFont(new java.awt.Font("Bitstream Charter", 3, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(96, 152, 171));
         jLabel4.setText("Sequer");
 
         jLabel1.setText("Second sequence (reverse) *");
@@ -157,14 +168,51 @@ public class mainForm extends javax.swing.JFrame {
         jLabel7.setText("* Insensitive to letter case, only letters: A, G, C, T, U.");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel8.setText("** Dafault (if field is empty) beginnig of the sequence is equal to 1 and the \\nand of the sequence is equal to the sequence length");
+        jLabel8.setText("** Dafault (if field is empty) beginnig of the sequence is equal to 1 and the end of the sequence is equal to the sequence length");
 
         jLabel11.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(151, 151, 151));
         jLabel11.setText("Copyright © 2016, Urszula Frątczak ");
         jLabel11.setToolTipText("");
 
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(151, 151, 151));
+        jLabel12.setText("Icon made by Freepik from www.flaticon.com is licensed by CC 3.0 BY");
+        jLabel12.setToolTipText("");
+
+        jLabel13.setIcon(new javax.swing.ImageIcon("/home/ula/Desktop/i3.png")); // NOI18N
+
+        jButton2.setText("Clear");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Clear");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Clear all");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
         jMenu1.setText("File");
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setText("Save");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem2);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Quit");
@@ -178,15 +226,6 @@ public class mainForm extends javax.swing.JFrame {
         jMenuBar1.add(jMenu1);
 
         jMenu7.setText("Help");
-
-        jMenuItem4.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem4.setText("Help");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        jMenu7.add(jMenuItem4);
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem3.setText("About");
@@ -209,97 +248,129 @@ public class mainForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(203, 203, 203)
+                        .addComponent(jLabel12))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(278, 278, 278)
+                        .addComponent(jLabel11))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 559, Short.MAX_VALUE)
+                                .addGap(2, 2, 2)
+                                .addComponent(jLabel8))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 614, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(2, 2, 2)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton2)
+                            .addComponent(jButton3))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jLabel4)
+                                .addGap(177, 177, 177)
+                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(33, 33, 33)
                                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel9)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGap(35, 35, 35)
                                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(76, 76, 76)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel5)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel8))))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel11)))
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel4)
-                .addGap(243, 243, 243))
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 587, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel1)))
+                                .addContainerGap(41, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(30, 30, 30)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane5)
                             .addComponent(jScrollPane3)
                             .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane6)
                             .addComponent(jScrollPane7)
                             .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel12))
         );
 
-        setBounds(0, 0, 656, 676);
+        getAccessibleContext().setAccessibleName("Sequer 1.0");
+
+        setBounds(0, 0, 733, 687);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
@@ -308,20 +379,17 @@ public class mainForm extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         String text = "Sequer 1.0\n"
-                + "Program bind two different sequences in define place.\n\n"
-                + "Created by Urszula Frątczak.";
-                //+ "\nI hope that this program will be a reminder of those three years.\n"; 
-                
-
+                + "Program binds two sequences at the specified places.\n\n"
+                + "Created by Urszula Frątczak.\n"
+                + "Icon made by Freepik from www.flaticon.com is licensed by CC 3.0 BY.";
         JOptionPane.showMessageDialog(null, text);
-
     }//GEN-LAST:event_jMenuItem3ActionPerformed
     
     public void createFile(File file, String sequenceLast){   //function to create file
         try {
                     file.createNewFile();
                 } catch (IOException ex) {
-                    JOptionPane.showMessageDialog(null, "Some problem with create file...", "Warning", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "Problem with create the file...", "Warning", JOptionPane.ERROR_MESSAGE);
                 }
                 BufferedWriter bw = null;
                  try{
@@ -329,7 +397,7 @@ public class mainForm extends javax.swing.JFrame {
                     bw.write(sequenceLast);
                     bw.close();
                 }catch(Exception e){
-                     JOptionPane.showMessageDialog(null, "Some problem with save file...", "Warning", JOptionPane.ERROR_MESSAGE);
+                     JOptionPane.showMessageDialog(null, "Problem with save the file...", "Warning", JOptionPane.ERROR_MESSAGE);
                 }
     }
     
@@ -339,13 +407,18 @@ public class mainForm extends javax.swing.JFrame {
     }
     
      public boolean checkRange(String range){    //function to check range of sequence, only can numbers from 1 to 9
-        boolean check = Pattern.matches("[1-9]*", range);      //true or false
+        boolean check = Pattern.matches("[0-9]*", range);      //true or false
+        if(check)
+            if(Integer.parseInt(range)<=0)
+                check = false;
         return check;
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String sequence1 = jTextArea1.getText().trim();          //First sequence to bind (forward)
+        sequence1 = sequence1.replaceAll("\\n", "");
         String sequence2 = jTextArea2.getText().trim();          //Second sequence to bind (reverse)
+        sequence2 = sequence2.replaceAll("\\n", "");
         int forwardFrom = 1, forwardTo = 1000, reverseFrom = 1, reverseTo = 1000;
         boolean checkRange = true;
         
@@ -364,19 +437,27 @@ public class mainForm extends javax.swing.JFrame {
                     if(jTextPane1.getText().isEmpty())
                         forwardFrom = 0;
                     else if(checkRange(jTextPane1.getText())){
-                        forwardFrom = Integer.parseInt(jTextPane1.getText());    
-                        --forwardFrom; 
+                        forwardFrom = Integer.parseInt(jTextPane1.getText());
+                        if(forwardFrom > sequence1.length())
+                            forwardFrom = sequence1.length();
+                        else
+                            --forwardFrom; 
                     } else 
                         checkRange = false;
 
 
                     if(jTextPane3.getText().isEmpty())
                         forwardTo = sequence1.length();
-                    else if(checkRange(jTextPane3.getText()))
-                        forwardTo = Integer.parseInt(jTextPane3.getText()); 
-                    else
+                    else if(checkRange(jTextPane3.getText())){
+                        forwardTo = Integer.parseInt(jTextPane3.getText());
+                        if(forwardTo > sequence1.length()){
+                            forwardTo = sequence1.length();
+                        }
+                    } else
                         checkRange = false;
-
+                    
+                    if(forwardFrom >= forwardTo)
+                        checkRange = false;
     /* for forward sequence */
 
     /* Range of nucleotide */
@@ -384,15 +465,24 @@ public class mainForm extends javax.swing.JFrame {
                         reverseFrom = 0;
                     } else if(checkRange(jTextPane4.getText())){
                         reverseFrom = Integer.parseInt(jTextPane4.getText());
+                        if(reverseFrom > sequence2.length())
+                            reverseFrom = sequence2.length();
+                        else
                         --reverseFrom;
                     } else
                         checkRange = false;
 
                     if(jTextPane5.getText().isEmpty())
                         reverseTo = sequence2.length();
-                    else if(checkRange(jTextPane4.getText()))
-                        reverseTo = Integer.parseInt(jTextPane5.getText()); 
-                    else 
+                    else if(checkRange(jTextPane5.getText())){
+                        reverseTo = Integer.parseInt(jTextPane5.getText());
+                        if(reverseTo > sequence2.length()){
+                            reverseTo = sequence2.length();
+                        }
+                    } else 
+                        checkRange = false;
+                    
+                    if(reverseFrom >= reverseTo)
                         checkRange = false;
     /* for reverse sequence */  
                     if(checkRange){
@@ -403,15 +493,21 @@ public class mainForm extends javax.swing.JFrame {
 
                         for(int i=reverseFrom; i<reverseTo; i++)      //to output sequence are added nucleotide from second sequence without impose beggining 
                             sequenceLast = sequenceLast + sequence2.charAt(i);
-
-                        File file = new File(fileName + ".txt");   
+                        
+                        File file = new File(fileName + ".txt");
+                        int seqLength = sequenceLast.length();
+                        
                         if(file.exists()){
                            if (JOptionPane.showConfirmDialog(null, "File with this name already exist. Would you like to overwrite it?", "WARNING",
                                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                                sequenceLast = fileName + " (" + String.valueOf(seqLength) + " pz)\n" + sequenceLast;
                                 createFile(file, sequenceLast);
                             }
-                        } else 
+                        } else{ 
+                            sequenceLast = fileName + " (" + String.valueOf(seqLength) + " pz)\n" + sequenceLast;
                             createFile(file, sequenceLast);
+                            forwardFrom = 1; forwardTo = 1000; reverseFrom = 1; reverseTo = 1000;
+                        }
                     }else
                         JOptionPane.showMessageDialog(null, "Incorrect range value", "Warning", JOptionPane.ERROR_MESSAGE);
                 }      
@@ -419,22 +515,23 @@ public class mainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        String text = "Sequer 1.0\n\n"
-                + "Sequences:\n"
-                + "Into textboxes for forward and reverse sequences you can only\n"
-                + "write or paste letters like A, T, G, C and U (case no matter).\n"
-                + "Other letters wouldn't be accepted.\n\n"
-                + "Range of sequences:\n"
-                + "In both cases when you left empty field:\n"
-                + "- beginnig of the sequence will be equal 1\n"
-                + "- end of the sequence will be equal the sequence length\n\n"
-                + "Name of file:\n"
-                + "Name of file can't be empty. Program don't save files without name."; 
-                
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTextArea1.setText("");
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-        JOptionPane.showMessageDialog(null, text);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jTextArea2.setText("");
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        jTextArea1.setText("");
+        jTextArea2.setText("");
+        jTextPane1.setText("");
+        jTextPane2.setText("");
+        jTextPane3.setText("");
+        jTextPane4.setText("");
+        jTextPane5.setText("");
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -465,19 +562,26 @@ public class mainForm extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                
+            public void run() { 
                 new mainForm().setVisible(true);
-                
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
+    private javax.swing.ButtonGroup buttonGroup3;
+    private javax.swing.ButtonGroup buttonGroup4;
+    private javax.swing.ButtonGroup buttonGroup5;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -505,8 +609,8 @@ public class mainForm extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar5;
     private javax.swing.JMenuBar jMenuBar6;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
